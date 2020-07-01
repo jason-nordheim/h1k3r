@@ -6,7 +6,6 @@ export const MobileLayout = props => {
   return (
     <div>
       <MobileHeader>
-
       </MobileHeader>
       <main>
         {props.children}
