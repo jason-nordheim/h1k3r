@@ -8,34 +8,38 @@ import { MobileAccountView } from './views/AccountView';
 import { MobileMapView } from './views/MapView';
 import { MobileEventsView } from './views/EventsView';
 import { MobileSocialView } from './views/SocialView';
+import { MoreView } from './views/MoreView';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MobileHomeView /> 
+          <MobileHomeView />
         </Route>
         <Route path="/login">
           <MobileLoginView />
         </Route>
         <Route path="/signup">
-          <MobileSignUpView /> 
+          <MobileSignUpView />
         </Route>
         <Route path="/map">
-          <MobileMapView /> 
+          <MobileMapView />
         </Route>
-        <Route path="/account" >
-          <MobileAccountView /> 
+        <Route path="/account">
+          <MobileAccountView />
         </Route>
         <Route path="/events">
-          <MobileEventsView /> 
+          <MobileEventsView />
         </Route>
         <Route path="/social">
-          <MobileSocialView /> 
+          <MobileSocialView />
+        </Route>
+        <Route path="/more">
+          <MoreView />
         </Route>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
