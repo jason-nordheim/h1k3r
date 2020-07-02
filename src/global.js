@@ -11,26 +11,26 @@ export const NavigationLinks = [
          {
            address: "/",
            label: "Home",
-           icon: <HomeIcon style={{ color: green[700]}} />,
+           icon: <HomeIcon  />,
          },
          {
            address: "/social",
            label: "Social",
-           icon: <GroupIcon style={{ color: green[700] }} />,
+           icon: <GroupIcon  />,
          },
          {
            address: "/events",
            label: "Events",
-           icon: <EventIcon style={{ color: green[700]}} />,
+           icon: <EventIcon  />,
          },
          {
            address: "/map",
            label: "Map",
-           icon: <LocationOnIcon style={{ color: green[700] }} />,
+           icon: <LocationOnIcon  />,
          },
          {
            address: "/more",
            label: "More",
-           icon: <MoreHorizIcon style={{ color: green[700]}} />,
+           icon: <MoreHorizIcon />,
          },
        ];
