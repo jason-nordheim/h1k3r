@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileLayout } from '../layouts/default'
+import { MobileLayout } from '../layouts/DefaultLayout'
 
 export const MobileLoginView = props => {
   return (
