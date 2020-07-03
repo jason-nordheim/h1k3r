@@ -1,36 +1,62 @@
-import React from 'react'
+import React from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { green } from "@material-ui/core/colors";
-
 
 export const NavigationLinks = [
-         {
-           address: "/",
-           label: "Home",
-           icon: <HomeIcon  />,
-         },
-         {
-           address: "/social",
-           label: "Social",
-           icon: <GroupIcon  />,
-         },
-         {
-           address: "/events",
-           label: "Events",
-           icon: <EventIcon  />,
-         },
-         {
-           address: "/map",
-           label: "Map",
-           icon: <LocationOnIcon  />,
-         },
-         {
-           address: "/more",
-           label: "More",
-           icon: <MoreHorizIcon />,
-         },
-       ];
+  {
+    address: "/",
+    exact: true, 
+    label: "Home",
+    icon: <HomeIcon style={{ color: "000" }} />,
+  },
+  {
+    address: "/social",
+    exact: false, 
+    label: "Social",
+    icon: <GroupIcon style={{ color: "000" }} />,
+  },
+  {
+    address: "/events",
+    exact: false, 
+    label: "Events",
+    icon: <EventIcon style={{ color: "000" }} />,
+  },
+  {
+    address: "/map",
+    exact: false, 
+    label: "Map",
+    icon: <LocationOnIcon style={{ color: "000" }} />,
+  },
+  {
+    address: "/more",
+    exact: false, 
+    label: "More",
+    icon: <MoreHorizIcon style={{ color: "000" }} />,
+  },
+];
+
+export const SiteLinks = [
+  ...NavigationLinks, 
+  {
+    address: '/login', 
+    exact: false, 
+    label: "Login", 
+    icon: null,
+  }, 
+  {
+    address: "/signup", 
+    exact: 'false', 
+    label: 'Sign Up', 
+    icon: null, 
+  }, 
+  {
+    address: '/account', 
+    exact: false, 
+    label: 'Account', 
+    icon: null
+  }
+]
+
