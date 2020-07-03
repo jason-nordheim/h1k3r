@@ -1,14 +1,28 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { BottomNavigationAction } from "@material-ui/core/";
-
-
+import { BottomNavigationAction, makeStyles, withStyles } from "@material-ui/core/";
+import { usePageTitle } from '../hooks/usePageTitle'
+import { blackIcon } from '../CustomIcons';
 
 export const LinkedBottomNavigationAction = ({ address, label, icon }) => {
-  const location = useLocation() 
+  const [pageTitle] = usePageTitle(); 
   return (
-    <Link to={address} >
-      <BottomNavigationAction label={label} icon={icon} />
+    <Link to={address} style={{textDecoration: 'none'}}>
+      <StyledBottomNavigationAction
+        selected={ pageTitle === label ? true: false}
+        label={label}
+        icon={icon}
+      />
     </Link>
   );
 }
+
+const StyledBottomNavigationAction = withStyles({
+  root: {
+    minWidth: '73px',
+    color: 'black', 
+  }, 
+  label: {
+    color: 'black'
+  }
+})(BottomNavigationAction)
