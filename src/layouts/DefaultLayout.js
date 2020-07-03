@@ -7,7 +7,7 @@ export const MobileLayout = props => {
     <div>
       <MobileHeader>
       </MobileHeader>
-      <main>
+      <main style={{marginTop: '80px'}}>
         {props.children}
       </main>
       <MobileFooter>
