@@ -4,6 +4,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 export const NavigationLinks = [
   {
@@ -25,10 +26,10 @@ export const NavigationLinks = [
     icon: <EventIcon style={{ color: "000" }} />,
   },
   {
-    address: "/map",
+    address: "/explore",
     exact: false, 
-    label: "Map",
-    icon: <LocationOnIcon style={{ color: "000" }} />,
+    label: "Explore",
+    icon: <ExploreIcon style={{ color: "000" }} />,
   },
   {
     address: "/more",

@@ -14,7 +14,6 @@ export const LoginForm = (props) => {
       display: "flex",
       flexDirection: "column",
       alignContent: 'center',
-      flex: 1, 
     },
     input: {
       width: '80%', 

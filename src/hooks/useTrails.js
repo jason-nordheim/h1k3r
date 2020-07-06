@@ -61,9 +61,23 @@ export const useTrails = () => {
         if(position?.latitude !== undefined) {
             const latitude = parseFloat(position.latitude?.toFixed(3))
             const longitude = parseFloat(position.longitude?.toFixed(3))
-            getTrails(latitude, longitude, 20, (data) => {
+            // closest 
+            getTrails(latitude, longitude, 5, (data) => {
                 console.log('data', data)
                 setTrails(data.trails)
+            })
+            // to the right 
+            getTrails(latitude + 0.5, longitude, 5, (data) => {
+                setTrails([...trails, data])
+            })
+            getTrails(latitude - 0.5, longitude, 5, (data) => {
+                setTrails([...trails, data])
+            })
+            getTrails(latitude, longitude + 0.5, 5, (data) => {
+                setTrails([...trails, data])
+            })
+            getTrails(latitude, longitude - 0.5, 5, (data) => {
+                setTrails([...trails, data])
             })
         }  
     }, [position])

@@ -18,6 +18,7 @@ const styles = {
     padding: "10px 20px",
     margin: 0,
     boxShadow: "5px 10px 8px #888888",
+    zIndex: 2, 
   },
   title: {
     flex: 3,

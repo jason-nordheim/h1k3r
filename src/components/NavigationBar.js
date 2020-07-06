@@ -11,6 +11,7 @@ export const MobileNavigationBar = props => {
         position: "absolute",
         bottom: 0,
         width: "100%",
+        zIndex: 3, 
       }}
     >
       <BottomNavigation

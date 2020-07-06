@@ -1,6 +1,6 @@
 import React from 'react'
 import  { MobileLayout } from '../layouts/DefaultLayout'
-import { Typography } from '@material-ui/core'
+import { Typography, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 import { AuthenticationContext } from '../components/AuthenticationContext'
 import { HikerImage } from '../components/HikerImage';
@@ -11,11 +11,20 @@ export const MobileHomeView = props => {
       <AuthenticationContext.Consumer>
         {(value) => {
           const { state } = value 
-          return state.isLoggedIn ? null /* TODO */ : (
-            <div>
+          return state.isLoggedIn 
+          ? (
+            <div style={{padding: '5vw'}}>
+              <Typography>Welcome {state.username}!</Typography>
+              <br /> 
+            </div>
+          )
+          : (
+            <div style={{ textAlign: "center"}}>
               <Typography variant="subtitle1">Welcome to H1k3r!</Typography>
               <br />
-              <HikerImage /> 
+              <br />
+              <HikerImage style={{ width: '70vw'}}/> 
+              <br />
               <br />
               <Typography variant="subtitle2">
                 Please <Link to="/login">Login</Link> or <Link to="/register">Register</Link> to get

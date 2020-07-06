@@ -9,8 +9,8 @@ export const MobileLoginView = props => {
     <MobileLayout>
       <LoginForm />
       <br />
-      <div style={{ textAlign: "center" }}>
-        <Link to="/register" style={{ color: '#111'}}>
+      <div style={{ textAlign: "center"}}>
+        <Link to="/register" style={{ color: '#111', flex: 1}}>
           <Typography variant="subtitle1">Don't have an account?</Typography>
         </Link>
       </div>

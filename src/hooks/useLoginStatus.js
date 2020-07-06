@@ -24,7 +24,7 @@ const actions = {
 };
 
 const AuthenticationReducer = (state, action) => {
-  const payload = JSON.parse(action.payload)
+  const payload = JSON.parse(action.payload) 
   switch (action.type) {
     case actions.signIn:
       return {
@@ -70,7 +70,10 @@ const AuthenticationReducer = (state, action) => {
         error: payload.error 
       };
     case actions.reset:
-      return localStorage.getItem(SAVE_KEY);
+      const data = localStorage.getItem(SAVE_KEY);
+      const newState = JSON.parse(data);
+      console.log('newState', newState)
+      return newState
     default:
       return state;
   }
@@ -80,8 +83,7 @@ export const useLoginState = () => {
   const [state, dispatch] = useReducer(AuthenticationReducer, startState);
 
   useEffect(() => {
-    if (state !== startState) {
-      console.log('state', state)
+     if (state !== startState) {
       localStorage.setItem(SAVE_KEY, JSON.stringify(state));
     }
   }, [state]);
@@ -93,12 +95,10 @@ export const useLoginState = () => {
     });
     try {
       const data = await loginUser(username, password);
-      console.log('dispatch start')
       await dispatch({
         type: actions.authenticated,
         payload: JSON.stringify({ token: data.token }),
       });
-      console.log('dispatch end')
       return data 
     } catch (err) {
       await dispatch({
@@ -133,6 +133,9 @@ export const useLoginState = () => {
   const signOut = () => {
     localStorage.removeItem(SAVE_KEY);
   };
+  const restore = async () => {
+    await dispatch({ type: actions.reset } )
+  }
 
-  return [state, signIn, signOut, register];
+  return [state, signIn, signOut, register, restore ];
 };

@@ -1,10 +1,10 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect } from "react";
 import { useLoginState } from "../hooks/useLoginStatus";
 
 export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = props => {
-  const [state, signIn, signOut, register] = useLoginState();
+  const [state, signIn, signOut, register ] = useLoginState();
 
   return (
     <AuthenticationContext.Provider value={{state, signIn, signOut, register}}>

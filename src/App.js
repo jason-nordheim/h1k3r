@@ -4,15 +4,13 @@ import { MobileHomeView } from "./views/HomeView";
 import { MobileLoginView } from "./views/LoginView";
 import { MobileRegisterView } from "./views/RegisterView";
 import { MobileAccountView } from "./views/AccountView";
-import { MobileMapView } from "./views/MapView";
+import { MobileExploreView } from "./views/ExploreView";
 import { MobileEventsView } from "./views/EventsView";
 import { MobileSocialView } from "./views/SocialView";
 import { MoreView } from "./views/MoreView";
 import { AnimatedSwitch, AnimatedRoute, spring } from "react-router-transition";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthenticationProvider } from "./components/AuthenticationContext";
-
-export const App = () => {
   const mapStyles = (styles) => {
     return {
       opacity: styles.opacity,
@@ -43,6 +41,7 @@ export const App = () => {
     },
   };
 
+export const App = () => {
   return (
     <BrowserRouter>
       <AuthenticationProvider>
@@ -56,7 +55,7 @@ export const App = () => {
           <Route path="/home" component={MobileHomeView} />
           <Route path="/login" component={MobileLoginView} />
           <Route path="/register" component={MobileRegisterView} />
-          <ProtectedRoute path="/map" component={MobileMapView} />
+          <ProtectedRoute path="/explore" component={MobileExploreView} />
           <ProtectedRoute path="/account" component={MobileAccountView} />
           <ProtectedRoute path="/events" component={MobileEventsView} />
           <ProtectedRoute path="/social" component={MobileSocialView} />
