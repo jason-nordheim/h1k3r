@@ -9,28 +9,13 @@ import { MobileEventsView } from "./views/EventsView";
 import { MobileSocialView } from "./views/SocialView";
 import { MoreView } from "./views/MoreView";
 import { AnimatedSwitch } from "react-router-transition";
-import {
-  AuthorizationContext,
-  AuthenticationReducer,
-  Reset,
-} from "./context/Authentication";
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 
 export const App = () => {
-  const [authState, authDispatch] = useReducer(AuthenticationReducer);
 
-  useEffect(() => {
-    const rawData = localStorage.getItem("authorization");
-    rawData === undefined && authDispatch(Reset(JSON.parse(rawData)));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("authorization", JSON.stringify(authState));
-  }, [authState]);
 
   return (
-    <AuthorizationContext.Provider value={authDispatch}>
       <BrowserRouter>
         <AnimatedSwitch
           atEnter={{ opacity: 0 }}
@@ -63,7 +48,6 @@ export const App = () => {
           </ProtectedRoute>
         </AnimatedSwitch>
       </BrowserRouter>
-    </AuthorizationContext.Provider>
   );
 }
 

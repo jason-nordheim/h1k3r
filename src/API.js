@@ -34,6 +34,14 @@ const authGet = async (path, token) => {
 }
 
 
-export const SignInUser = (username, password) => {
-  
-};
+export const registerUser = async (first, last, username, password, email, bio) => {
+  const payload = { first, last, username, password, email, bio }
+  const response = await post('/register', payload)
+  return await response.json() 
+}
+
+export const loginUser = async (username, password) => {
+  const payload = { username, password } 
+  const response = await post('/login', payload)
+  return await response.json() 
+}

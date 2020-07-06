@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { ValidatedTextField } from "./FormElements";
-import { AuthorizationContext, SignIn } from "../context/Authentication";
 import { Button } from "@material-ui/core";
+import { loginUser } from '../API'
+import { useLoginState } from '../hooks/useLoginStatus';
 
 export const SignInForm = (props) => {
-  const AuthContext = useContext(AuthorizationContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   const styles = {
     form: {
@@ -15,6 +15,11 @@ export const SignInForm = (props) => {
       padding: "5vw",
     },
   };
+
+  const handleSubmit = async event => {
+    event.preventDefault() 
+    //await signIn(username, password)
+  }
 
   return (
     <form style={styles.form}>
@@ -34,6 +39,7 @@ export const SignInForm = (props) => {
       <ValidatedTextField
         fieldName="password"
         fieldLabel="Password"
+        type="password"
         validationFunction={(password) => {
           if (password.length < 3)
             return "Password must be greater than 3 characters";
@@ -43,18 +49,18 @@ export const SignInForm = (props) => {
           }
         }}
       />
-      <br />
-      {AuthContext.isLoading ? (
+      {/* <br />
+      {state.isLoading ? (
         <Button variant="contained" disabled />
       ) : (
         <Button
           variant="contained"
           disabled={username === "" || password === ""}
-          onClick={(e) => AuthContext.dispatch(SignIn(username, password))}
+          onClick={handleSubmit}
         >
           Login
         </Button>
-      )}
+      )} */}
     </form>
   );
 };

@@ -5,6 +5,8 @@ export const ValidatedTextField = ({
   fieldName,
   fieldLabel,
   validationFunction,
+  type = 'text', 
+  multiline = false, 
 }) => {
   const [value, setValue] = useState("");
   const [helperText, setHelperText] = useState('') 
@@ -26,7 +28,9 @@ export const ValidatedTextField = ({
   return (
     <FormControl styles={styles.root} error={helperText !== ''}>
       <InputLabel htmlFor={fieldName}>{fieldLabel}</InputLabel>
-      <Input fullWidth
+      <Input fullWidth 
+        multiline={multiline}
+        type={type}
         value={value}
         onChange={e => setValue(e.target.value)}
       />

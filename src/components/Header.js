@@ -38,15 +38,9 @@ export const MobileHeader = props => {
         <Typography variant="subtitle2" style={styles.title}>
           {pageTitle}
         </Typography>
-        { AuthState.isLoggedIn 
-          ? (
-            <Link to='/account'>
-              <SettingsIcon style={styles.icon} />
-            </Link>
-          )
-          : null 
-        }
-        
+        <Link to='/account'>
+          <SettingsIcon style={styles.icon} />
+        </Link>
     </header>
   );
 }
