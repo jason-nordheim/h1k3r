@@ -124,14 +124,14 @@ export const RegisterUserForm = (props) => {
             <br />
 
             {state.isLoading ? (
-              <Button variant="contained" disabled />
+              <Button variant="contained" disabled >Loading...</Button>
             ) : (
               <Button
                 variant="contained"
                 disabled={username === "" || password === ""}
                 onClick={handleSubmit}
               >
-                Login
+                Sign Up
               </Button>
             )}
           </form>

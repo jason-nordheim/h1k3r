@@ -24,24 +24,15 @@ const actions = {
 };
 
 const AuthenticationReducer = (state, action) => {
-  const {
-    first,
-    last,
-    username,
-    password,
-    email,
-    bio,
-    token,
-    error,
-  } = JSON.parse(action.payload);
+  const payload = JSON.parse(action.payload)
   switch (action.type) {
     case actions.signIn:
       return {
         ...state,
         error: null,
         isLoading: true,
-        username,
-        password,
+        username: payload.username,
+        password: payload.password
       };
     case actions.signOut:
       return startState;
@@ -50,12 +41,12 @@ const AuthenticationReducer = (state, action) => {
         ...state,
         error: null,
         isLoading: true,
-        first,
-        last,
-        username,
-        email,
-        password,
-        bio,
+        first: payload.first,
+        last: payload.last,
+        username: payload.username,
+        email: payload.email, 
+        password: payload.password,
+        bio: payload.bio,
       };
     case actions.accountCreated:
       return {
@@ -63,20 +54,20 @@ const AuthenticationReducer = (state, action) => {
         isLoading: false,
         error: null,
       };
-    case action.authenticated:
+    case actions.authenticated:
       return {
         ...state,
         isLoggedIn: true,
         isLoading: false,
         error: null,
-        token,
+        token: payload.token,
       };
     case actions.error:
       return {
         ...state,
         isLoading: false,
         isLoggedIn: false,
-        error,
+        error: payload.error 
       };
     case actions.reset:
       return localStorage.getItem(SAVE_KEY);
@@ -90,31 +81,34 @@ export const useLoginState = () => {
 
   useEffect(() => {
     if (state !== startState) {
+      console.log('state', state)
       localStorage.setItem(SAVE_KEY, JSON.stringify(state));
     }
   }, [state]);
 
   const signIn = async (username, password) => {
-    dispatch({
+    await dispatch({
       type: actions.signIn,
       payload: JSON.stringify({ username, password }),
     });
     try {
       const data = await loginUser(username, password);
-      dispatch({
+      console.log('dispatch start')
+      await dispatch({
         type: actions.authenticated,
         payload: JSON.stringify({ token: data.token }),
       });
+      console.log('dispatch end')
       return data 
     } catch (err) {
-      dispatch({
+      await dispatch({
         type: actions.error,
         payload: JSON.stringify({ error: err }),
       });
     }
   };
   const register = async (first, last, username, password, email, bio) => {
-    dispatch({
+    await dispatch({
       type: actions.register,
       payload: JSON.stringify({ first, last, email, password, bio, username }),
     });
@@ -127,10 +121,10 @@ export const useLoginState = () => {
         email,
         bio
       );
-      dispatch({ type: actions.accountCreated, payload: null });
+      await dispatch({ type: actions.accountCreated, payload: null });
       return data 
     } catch (err) {
-      dispatch({
+      await dispatch({
         type: actions.error,
         payload: JSON.stringify({ error: err }),
       });

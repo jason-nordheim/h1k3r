@@ -10,7 +10,7 @@ const styles = {
     position: "absolute",
     top: 0,
     left: "-2%",
-    width: "102%",
+    width: "92%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -42,7 +42,7 @@ export const MobileHeader = (props) => {
               {pageTitle}
             </Typography>
             {state.isLoggedIn ? (
-              <Link to="/account">
+              <Link to="/account" style={{color: 'black'}}>
                 <SettingsIcon style={styles.icon} />
               </Link>
             ) : null}

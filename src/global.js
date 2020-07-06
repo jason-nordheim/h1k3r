@@ -47,9 +47,9 @@ export const SiteLinks = [
     icon: null,
   }, 
   {
-    address: "/signup", 
+    address: "/register", 
     exact: 'false', 
-    label: 'Sign Up', 
+    label: 'Create Account', 
     icon: null, 
   }, 
   {

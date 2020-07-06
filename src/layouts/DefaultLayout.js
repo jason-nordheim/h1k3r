@@ -1,18 +1,23 @@
-import React from 'react'
-import { MobileHeader } from '../components/Header'
-import { MobileFooter } from '../components/Footer'
+import React from "react";
+import { MobileHeader } from "../components/Header";
+import { MobileFooter } from "../components/Footer";
 
-export const MobileLayout = props => {
+export const MobileLayout = (props) => {
   return (
-    <div>
-      <MobileHeader>
-      </MobileHeader>
-      <main style={{marginTop: '80px'}}>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+      <MobileHeader />
+      <main
+        style={{
+          marginTop: "80px",
+          display: "flex",
+          justifyContent: "center",
+          width: "95vw",
+          flexDirection: 'column'
+        }}
+      >
         {props.children}
       </main>
-      <MobileFooter>
-      </MobileFooter>
+      <MobileFooter />
     </div>
-  )
-}
-
+  );
+};

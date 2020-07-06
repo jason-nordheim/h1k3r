@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route } from "react-router-dom";
 import { MobileHomeView } from "./views/HomeView";
 import { MobileLoginView } from "./views/LoginView";
-import { MobileSignUpView } from "./views/SignUpView";
+import { MobileRegisterView } from "./views/RegisterView";
 import { MobileAccountView } from "./views/AccountView";
 import { MobileMapView } from "./views/MapView";
 import { MobileEventsView } from "./views/EventsView";
@@ -17,40 +17,43 @@ export const App = () => {
 
 
   return (
-      <BrowserRouter>
-        <AuthenticationProvider>
-          <AnimatedSwitch
-            atEnter={{ opacity: 0 }}
-            atLeave={{ opacity: 0 }}
-            atActive={{ opacity: 1 }}
-          >
-            <Route exact path="/">
-              <MobileHomeView />
-            </Route>
-            <Route path="/login">
-              <MobileLoginView />
-            </Route>
-            <Route path="/signup">
-              <MobileSignUpView />
-            </Route>
-            <ProtectedRoute path="/map">
-              <MobileMapView />
-            </ProtectedRoute>
-            <ProtectedRoute path="/account">
-              <MobileAccountView />
-            </ProtectedRoute>
-            <ProtectedRoute path="/events">
-              <MobileEventsView />
-            </ProtectedRoute>
-            <ProtectedRoute path="/social">
-              <MobileSocialView />
-            </ProtectedRoute>
-            <ProtectedRoute path="/more">
-              <MoreView />
-            </ProtectedRoute>
-          </AnimatedSwitch>
-        </AuthenticationProvider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <AuthenticationProvider>
+        <AnimatedSwitch
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+        >
+          <Route exact path="/">
+            <MobileHomeView />
+          </Route>
+          <Route path="/home">
+            <MobileHomeView />
+          </Route>
+          <Route path="/login">
+            <MobileLoginView />
+          </Route>
+          <Route path="/register">
+            <MobileRegisterView />
+          </Route>
+          <ProtectedRoute path="/map">
+            <MobileMapView />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account">
+            <MobileAccountView />
+          </ProtectedRoute>
+          <ProtectedRoute path="/events">
+            <MobileEventsView />
+          </ProtectedRoute>
+          <ProtectedRoute path="/social">
+            <MobileSocialView />
+          </ProtectedRoute>
+          <ProtectedRoute path="/more">
+            <MoreView />
+          </ProtectedRoute>
+        </AnimatedSwitch>
+      </AuthenticationProvider>
+    </BrowserRouter>
   );
 }
 
