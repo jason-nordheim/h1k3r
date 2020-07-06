@@ -1,13 +1,19 @@
 import React, { useContext } from 'react' 
 import { Route, Redirect } from 'react-router-dom'
-import { AuthorizationContext } from "../context/Authentication";
+import { AuthenticationContext } from "./AuthenticationContext";
 
 export const ProtectedRoute = ({ to, children, ...other }) => {
-  const AuthContext = useContext(AuthorizationContext);
+  return (
+    <AuthenticationContext.Consumer>
+      {(value) => {
+        const { state, signIn, signOut, register } = value;
+        return (
+        state.isLoggedIn 
+          ? <Route to={to} {...other}>{children}</Route>
+          : <Redirect to="/login" /> 
+        )
+      }}
+    </AuthenticationContext.Consumer>
+  )  
   
-  if(AuthContext.isLoggedIn) {
-    return <Route to={to} {...other}>{children}</Route>
-  } else {
-    return <Redirect to="/login" /> 
-  }
 }

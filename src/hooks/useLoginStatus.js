@@ -1,7 +1,7 @@
 import { useState, useReducer, useEffect } from "react";
 import { loginUser, registerUser } from "../API";
 
-const SAVE_KEY = 'loginState'
+const SAVE_KEY = "loginState";
 
 const startState = {
   isLoggedIn: false,
@@ -89,7 +89,7 @@ export const useLoginState = () => {
   const [state, dispatch] = useReducer(AuthenticationReducer, startState);
 
   useEffect(() => {
-    if (state !== startState){
+    if (state !== startState) {
       localStorage.setItem(SAVE_KEY, JSON.stringify(state));
     }
   }, [state]);
@@ -105,6 +105,7 @@ export const useLoginState = () => {
         type: actions.authenticated,
         payload: JSON.stringify({ token: data.token }),
       });
+      return data 
     } catch (err) {
       dispatch({
         type: actions.error,
@@ -118,14 +119,25 @@ export const useLoginState = () => {
       payload: JSON.stringify({ first, last, email, password, bio, username }),
     });
     try {
-      const data = await registerUser(first, last, username, password, email, bio)
-      console.log('register', data)
+      const data = await registerUser(
+        first,
+        last,
+        username,
+        password,
+        email,
+        bio
+      );
+      dispatch({ type: actions.accountCreated, payload: null });
+      return data 
     } catch (err) {
-      dispatch({ type: actions.error, payload: JSON.stringify({error: err})})
+      dispatch({
+        type: actions.error,
+        payload: JSON.stringify({ error: err }),
+      });
     }
   };
-  const signOut = () => { 
-    localStorage.removeItem(SAVE_KEY)
+  const signOut = () => {
+    localStorage.removeItem(SAVE_KEY);
   };
 
   return [state, signIn, signOut, register];

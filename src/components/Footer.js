@@ -1,11 +1,15 @@
-import React, { useContext } from 'react'
-import { MobileNavigationBar } from './NavigationBar'
-import { AuthorizationContext } from '../context/Authentication'
+import React from "react";
+import { MobileNavigationBar } from "./NavigationBar";
+import { AuthenticationContext } from "./AuthenticationContext";
 
-export const MobileFooter = props => {
-  // const authContext = useContext(AuthorizationContext);
-  // if ( authContext.isLoggedIn ) return <MobileNavigationBar />
-  // else return null
-  return null
-}
-
+export const MobileFooter = (props) => {
+  return (
+    <AuthenticationContext.Consumer>
+      {(value) => {
+        const { state, signIn, signOut, register } = value;
+        if (state.isLoggedIn) return <MobileNavigationBar />;
+        else return null;
+      }}
+    </AuthenticationContext.Consumer>
+  );
+};
