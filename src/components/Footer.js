@@ -6,7 +6,7 @@ export const MobileFooter = (props) => {
   return (
     <AuthenticationContext.Consumer>
       {(value) => {
-        const { state, signIn, signOut, register } = value;
+        const { state, /* signIn, signOut, register */  } = value;
         if (state.isLoggedIn) return <MobileNavigationBar />;
         else return null;
       }}

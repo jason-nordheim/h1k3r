@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { ValidatedTextField } from "./FormElements";
 import { Button } from "@material-ui/core";
-import { loginUser } from "../API";
 import { AuthenticationContext } from "./AuthenticationContext";
 
 export const SignInForm = (props) => {
@@ -19,7 +18,7 @@ export const SignInForm = (props) => {
   return (
     <AuthenticationContext.Consumer>
       {(value) => {
-        const { state, signIn, signOut, register } = value;
+        const { state, signIn, /* signOut, register */ } = value;
 
         const handleSubmit = async (event) => {
           event.preventDefault();

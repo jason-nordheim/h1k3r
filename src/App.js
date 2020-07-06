@@ -54,8 +54,4 @@ export const App = () => {
   );
 }
 
-const Routes = () => {
-  
-}
-
 export default App 

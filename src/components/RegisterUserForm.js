@@ -30,7 +30,7 @@ export const RegisterUserForm = (props) => {
           //await signIn(username, password)
           await register(first, last, email, password, bio, username);
         };
-        const { state, signIn, signOut, register } = value;
+        const { state, /* signIn, signOut, */ register } = value;
         return (
           <form style={styles.form}>
             <ValidatedTextField

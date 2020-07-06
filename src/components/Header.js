@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Typography } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { usePageTitle } from "../hooks/usePageTitle";
@@ -35,7 +35,7 @@ export const MobileHeader = (props) => {
   return (
     <AuthenticationContext.Consumer>
       {(value) => {
-        const { state, signIn, signOut, register } = value;
+        const { state, /* signIn, signOut, register */ } = value;
         return (
           <header style={styles.header}>
             <Typography variant="subtitle2" style={styles.title}>

@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import { loginUser, registerUser } from "../API";
 
 const SAVE_KEY = "loginState";
