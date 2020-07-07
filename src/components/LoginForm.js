@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ValidatedTextField } from "./FormElements";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { AuthenticationContext } from "./AuthenticationContext";
 import { HikerImage } from './HikerImage'
 import { Redirect } from 'react-router-dom';
@@ -26,6 +26,11 @@ export const LoginForm = (props) => {
     button: {
       alignSelf: 'center', 
       width: '80%'
+    }, 
+    error: {
+      width: '80%', 
+      color: 'red', 
+      alignSelf: 'center',
     }
   };
 
@@ -44,6 +49,7 @@ export const LoginForm = (props) => {
         return (
           <form style={styles.form}>
             <HikerImage style={styles.image} /> 
+            { state.error ? <Typography style={styles.error}> Incorrect username or passoword</Typography> : null }
             <ValidatedTextField
               style={styles.input}
               fieldName="username"

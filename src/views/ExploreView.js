@@ -1,8 +1,6 @@
-import React, { createRef } from "react";
+import React from "react";
 import { MobileLayout } from "../layouts/DefaultLayout";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { useTrails } from "../hooks/useTrails";
-import { TrailPopup } from '../components/TrailPopup';
 import { MobileMap } from '../components/Map';
 
 
@@ -17,6 +15,7 @@ export const MobileExploreView = (props) => {
 
   return (
     <MobileLayout>
+
       <MobileMap {...mapProps}/> 
     </MobileLayout>
   );

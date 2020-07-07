@@ -6,8 +6,9 @@ export const MobileMap = ({ position, error, trails, switchPosition, initialPosi
   return (
     <Map
       style={{
+        marginTop: '10%', 
         width: "98%",
-        height: "95%",
+        height: "85%",
         overflow: "hidden",
         zIndex: 0,
       }}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { usePageTitle } from "../hooks/usePageTitle";
 import { Link } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
@@ -21,8 +22,12 @@ const styles = {
     zIndex: 2, 
   },
   title: {
-    flex: 3,
+    flex: 4,
     fontSize: "30px",
+  },
+  iconLink: {
+    color: '#000',
+    paddingLeft: '10px', 
   },
   icon: {
     flex: 1,
@@ -36,16 +41,21 @@ export const MobileHeader = (props) => {
   return (
     <AuthenticationContext.Consumer>
       {(value) => {
-        const { state, /* signIn, signOut, register */ } = value;
+        const { state, signIn, signOut, register} = value;
         return (
           <header style={styles.header}>
             <Typography variant="subtitle2" style={styles.title}>
               {pageTitle}
             </Typography>
             {state.isLoggedIn ? (
-              <Link to="/account" style={{color: 'black'}}>
-                <SettingsIcon style={styles.icon} />
-              </Link>
+              <>
+                <Link to="/account" style={styles.iconLink}>
+                  <SettingsIcon style={styles.icon} />
+                </Link>
+                <Link to="/" style={styles.iconLink} onClick={(e) => signOut()}>
+                  <ExitToAppIcon style={styles.icon} />
+                </Link>
+              </>
             ) : null}
           </header>
         );

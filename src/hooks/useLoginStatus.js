@@ -72,7 +72,6 @@ const AuthenticationReducer = (state, action) => {
     case actions.reset:
       const data = localStorage.getItem(SAVE_KEY);
       const newState = JSON.parse(data);
-      console.log('newState', newState)
       return newState
     default:
       return state;
@@ -80,7 +79,8 @@ const AuthenticationReducer = (state, action) => {
 };
 
 export const useLoginState = () => {
-  const [state, dispatch] = useReducer(AuthenticationReducer, startState);
+  const [state, dispatch] = useReducer(AuthenticationReducer, (JSON.parse(localStorage.getItem(SAVE_KEY))) || startState);
+
 
   useEffect(() => {
      if (state !== startState) {
@@ -103,7 +103,7 @@ export const useLoginState = () => {
     } catch (err) {
       await dispatch({
         type: actions.error,
-        payload: JSON.stringify({ error: err }),
+        payload: JSON.stringify({ error: "Incorrect Username or Password" }),
       });
     }
   };
