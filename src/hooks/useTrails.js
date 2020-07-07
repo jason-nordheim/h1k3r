@@ -10,7 +10,7 @@ const denver = {
     updatedAt: Date.now()
 }
 
-const getTrails = (latitude, longitude, maxDistance = 10, saveDataCallback) => {
+const getTrails = async (latitude, longitude, maxDistance = 10) => {
   // if(typeof(latitude) !== typeof(Number)) throw new Error('Invlalid Latitude')
   // if(typeof(longitude) !== typeof(Number)) throw new Error('Invalid Longitude')
   // if(typeof(maxDistance) !== typeof(Number)) throw new Error('Invalid Distance')
@@ -21,11 +21,18 @@ const getTrails = (latitude, longitude, maxDistance = 10, saveDataCallback) => {
     longitude.toFixed(3)
   )}&maxDistance=${maxDistance}&key=${API_KEY}`;
 
-  fetch(requestUrl)
-    .then((response) => response.json())
-    .then(saveDataCallback);
+  const response = await fetch(requestUrl)
+  const data = await response.json() 
+  return data.trails 
 };
 
+const queryTrails = async (ids) => {
+    const idString = ids.join(',')
+    const requestUrl = `${ROOT_URL}get-trails-by-id?ids=${idString}&key=${API_KEY}`;
+    const response = await fetch(requestUrl)
+    const data = await response.json()
+    return data.trails 
+}
 
 export const useTrails = () => {
     const [position, setPosition] = useState(denver) 
@@ -58,28 +65,25 @@ export const useTrails = () => {
 
 
     useEffect(() => {
-        if(position?.latitude !== undefined) {
-            const latitude = parseFloat(position.latitude?.toFixed(3))
-            const longitude = parseFloat(position.longitude?.toFixed(3))
-            // closest 
-            getTrails(latitude, longitude, 5, (data) => {
-                console.log('data', data)
-                setTrails(data.trails)
-            })
-            // // to the right 
-            // getTrails(latitude + 0.5, longitude, 5, (data) => {
-            //     setTrails([...trails, data.trails])
-            // })
-            // getTrails(latitude - 0.5, longitude, 5, (data) => {
-            //     setTrails([...trails, data.trails]);
-            // })
-            // getTrails(latitude, longitude + 0.5, 5, (data) => {
-            //     setTrails([...trails, data.trails]);
-            // })
-            // getTrails(latitude, longitude - 0.5, 5, (data) => {
-            //     setTrails([...trails, data.trails]);
-            // })
+        async function getData() {
+            if(position?.latitude !== undefined) {
+                const offset = 0.2
+                const latitude = parseFloat(position.latitude?.toFixed(3))
+                const longitude = parseFloat(position.longitude?.toFixed(3))
+                
+                const center = await getTrails(latitude, longitude, 5)
+                const left = await getTrails(latitude - offset, longitude, 5)
+                const right = await getTrails(latitude + offset, longitude, 5)
+                const top = await getTrails(latitude, longitude - offset, 5)
+                const bottom = await getTrails(latitude, longitude + offset, 5)
+
+                const combined = [...center, ...left, ...right, ...top, ...bottom]
+                const ids = Array.from(new Set(combined.map(trail => trail.id))).sort() 
+                const unique = await queryTrails(ids)
+                setTrails(unique);
+            }
         }  
+        getData() 
     }, [position])
 
     return [position, error, trails, switchPosition] 
