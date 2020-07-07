@@ -1,7 +1,7 @@
 import React from 'react'
 import { BottomNavigation } from '@material-ui/core/'
 import { LinkedBottomNavigationAction } from './LinkedBottomNavigationAction';
-import { NavigationLinks } from '../global'
+import { NavigationLinks } from '../../global'
 
 
 export const MobileNavigationBar = props => {

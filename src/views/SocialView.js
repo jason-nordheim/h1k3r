@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MobileLayout } from '../layouts/DefaultLayout'
+import { MobileLayout } from "../components/layout/DefaultLayout";
 import { Paper } from '@material-ui/core'
 
 export const MobileSocialView = props => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { MobileNavigationBar } from "./NavigationBar";
-import { AuthenticationContext } from "./AuthenticationContext";
+import { MobileNavigationBar } from "../navigation/NavigationBar";
+import { AuthenticationContext } from "../AuthenticationContext";
 
 export const MobileFooter = (props) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { BottomNavigationAction, withStyles } from "@material-ui/core/";
-import { usePageTitle } from '../hooks/usePageTitle'
+import { usePageTitle } from '../../hooks/usePageTitle'
 
 export const LinkedBottomNavigationAction = ({ address, label, icon }) => {
   const [pageTitle] = usePageTitle(); 

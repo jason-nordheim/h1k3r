@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileLayout } from '../layouts/DefaultLayout'
+import { MobileLayout } from "../components/layout/DefaultLayout";
 import { RegisterUserForm } from '../components/RegisterUserForm'
 
 export const MobileRegisterView = props => {

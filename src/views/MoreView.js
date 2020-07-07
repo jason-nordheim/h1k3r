@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileLayout } from '../layouts/DefaultLayout'
+import { MobileLayout } from "../components/layout/DefaultLayout";
 
 export const MoreView = props => {
   return (

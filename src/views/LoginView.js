@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileLayout } from '../layouts/DefaultLayout'
+import { MobileLayout } from "../components/layout/DefaultLayout";
 import { LoginForm } from '../components/LoginForm'
 import { Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom'

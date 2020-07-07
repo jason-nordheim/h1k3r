@@ -1,6 +1,6 @@
 import React from "react";
-import { MobileHeader } from "../components/Header";
-import { MobileFooter } from "../components/Footer";
+import { MobileHeader } from "./Header";
+import { MobileFooter } from "./Footer";
 
 export const MobileLayout = (props) => {
   return (

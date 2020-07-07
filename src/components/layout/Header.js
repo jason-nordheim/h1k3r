@@ -2,9 +2,9 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { usePageTitle } from "../../hooks/usePageTitle";
 import { Link } from "react-router-dom";
-import { AuthenticationContext } from "./AuthenticationContext";
+import { AuthenticationContext } from "../AuthenticationContext";
 
 const styles = {
   header: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileLayout } from '../layouts/DefaultLayout'
+import { MobileLayout } from '../components/layout/DefaultLayout'
 import { List, ListItem } from '@material-ui/core'
 
 export const MobileAccountView = props => {
