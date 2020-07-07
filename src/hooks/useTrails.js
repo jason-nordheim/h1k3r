@@ -66,19 +66,19 @@ export const useTrails = () => {
                 console.log('data', data)
                 setTrails(data.trails)
             })
-            // to the right 
-            getTrails(latitude + 0.5, longitude, 5, (data) => {
-                setTrails([...trails, data])
-            })
-            getTrails(latitude - 0.5, longitude, 5, (data) => {
-                setTrails([...trails, data])
-            })
-            getTrails(latitude, longitude + 0.5, 5, (data) => {
-                setTrails([...trails, data])
-            })
-            getTrails(latitude, longitude - 0.5, 5, (data) => {
-                setTrails([...trails, data])
-            })
+            // // to the right 
+            // getTrails(latitude + 0.5, longitude, 5, (data) => {
+            //     setTrails([...trails, data.trails])
+            // })
+            // getTrails(latitude - 0.5, longitude, 5, (data) => {
+            //     setTrails([...trails, data.trails]);
+            // })
+            // getTrails(latitude, longitude + 0.5, 5, (data) => {
+            //     setTrails([...trails, data.trails]);
+            // })
+            // getTrails(latitude, longitude - 0.5, 5, (data) => {
+            //     setTrails([...trails, data.trails]);
+            // })
         }  
     }, [position])
 
