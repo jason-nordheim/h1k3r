@@ -44,7 +44,7 @@ export const registerUser = async (
   const payload = { first, last, username, password, email, bio };
   const response = await post("/register", payload);
   if (!response.ok) {
-    const error = response.json();
+    const error = await response.json();
     throw new Error(error.error);
   }
   return await response.json();
@@ -54,8 +54,25 @@ export const loginUser = async (username, password) => {
   const payload = { username, password };
   const response = await post("/login", payload);
   if (!response.ok) {
-    const err = response.json();
+    const err = await response.json();
     throw new Error(err);
   }
   return await response.json();
 };
+
+const getMyEvents = async (token) => {
+  const response = await authGet("/events", token)
+  if (!response.ok) {
+    const error = await response.json() 
+    throw new Error(error)
+  } else return await response.json() 
+}
+
+const createEvent = async (start, end, title, description, token) => {
+  const payload = { start, end, title, description }
+  const response = await authPost("/events", payload, token)
+  if (!response.ok){
+    const error = await response.json(); 
+    throw new Error(error)
+  } else return await response.json(); 
+} 
