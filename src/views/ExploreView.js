@@ -3,6 +3,7 @@ import { MobileLayout } from "../layouts/DefaultLayout";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { useTrails } from "../hooks/useTrails";
 import { TrailPopup } from '../components/TrailPopup';
+import { MobileMap } from '../components/Map';
 
 
 export const MobileExploreView = (props) => {
@@ -12,26 +13,11 @@ export const MobileExploreView = (props) => {
     parseFloat(position.longitude),
   ];
 
+  const mapProps = { position, error, trails, switchPosition, initialPosition }
+
   return (
     <MobileLayout>
-      <Map
-        style={{ width: "98%", height: "95%", overflow: "hidden", zIndex: 0 }}
-        center={initialPosition}
-        zoom={10}
-      >
-        {position !== null ? (
-          <Marker position={[position.latitude, position.longitude]}>
-            <Popup>Current Location</Popup>
-          </Marker>
-        ) : null}
-        {trails !== null ? trails.map(t => <TrailPopup trail={t} /> ): null}
-
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          maxZoom={18}
-        />
-      </Map>
+      <MobileMap {...mapProps}/> 
     </MobileLayout>
   );
 };

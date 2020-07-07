@@ -12,7 +12,7 @@ export const TrailPopup = ({ trail }) => {
     >
       <Popup style={{ textAlign: 'left'}}>
         <h1 style={{fontSize: '14px'}}>{trail.name}</h1>
-        <Rating value={trail.stars} precision={0.1} />
+        <Rating value={trail.stars} precision={0.1} readOnly/>
         <p>{trail.summary}</p>
       </Popup>
     </Marker>
