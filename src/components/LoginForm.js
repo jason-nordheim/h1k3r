@@ -44,12 +44,23 @@ export const LoginForm = (props) => {
           await signIn(username, password)
         };
 
+        const handleKeyUp = event => {
+          if (event.keyCode === 13 && (username !== "" || password !== "")) {
+            handleSubmit(event);
+          }
+        }
+
         if (state.isLoggedIn) return <Redirect to="/" /> 
 
         return (
           <form style={styles.form}>
-            <HikerImage style={styles.image} /> 
-            { state.error ? <Typography style={styles.error}> Incorrect username or passoword</Typography> : null }
+            <HikerImage style={styles.image} />
+            {state.error ? (
+              <Typography style={styles.error}>
+                {" "}
+                Incorrect username or passoword
+              </Typography>
+            ) : null}
             <ValidatedTextField
               style={styles.input}
               fieldName="username"
@@ -69,6 +80,7 @@ export const LoginForm = (props) => {
               fieldLabel="Password"
               type="password"
               style={styles.input}
+              onKeyUp={handleKeyUp}
               validationFunction={(password) => {
                 if (password.length < 3)
                   return "Password must be greater than 3 characters";
@@ -79,9 +91,11 @@ export const LoginForm = (props) => {
               }}
             />
             <br />
-            <br /> 
+            <br />
             {state.isLoading ? (
-              <Button style={styles.button} variant="contained" disabled >Loading...</Button>
+              <Button style={styles.button} variant="contained" disabled>
+                Loading...
+              </Button>
             ) : (
               <Button
                 style={styles.button}
