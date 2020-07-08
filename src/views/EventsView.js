@@ -5,6 +5,7 @@ import { CustomTab, CustomTabs } from '../components/CustomTabs'
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { AuthenticationContext } from '../components/AuthenticationContext';
+import AddIcon from "@material-ui/icons/Add";
 
 
 export const MobileEventsView = props => {
@@ -33,8 +34,9 @@ export const MobileEventsView = props => {
               >
                 <CustomTab label="My Events" />
                 <CustomTab label="Invites" />
+                <CustomTab icon={<AddIcon />} />
               </CustomTabs>
-              <EventCard user={user} event={event} /> 
+              <EventCard user={user} event={event} />
             </Paper>
           );
         }}
