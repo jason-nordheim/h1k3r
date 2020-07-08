@@ -67,6 +67,8 @@ const AuthenticationReducer = (state, action) => {
         ...state,
         isLoading: false,
         isLoggedIn: false,
+        username: null, 
+        password: null, 
         error: payload.error 
       };
     case actions.reset:
@@ -103,7 +105,7 @@ export const useLoginState = () => {
     } catch (err) {
       await dispatch({
         type: actions.error,
-        payload: JSON.stringify({ error: "Incorrect Username or Password" }),
+        payload: JSON.stringify({ error: err.message }),
       });
     }
   };
