@@ -5,6 +5,7 @@ export const ValidatedTextField = ({
   fieldName,
   fieldLabel,
   validationFunction,
+  onKeyUp, 
   type = 'text', 
   multiline = false, 
   style, 
@@ -34,6 +35,7 @@ export const ValidatedTextField = ({
         multiline={multiline}
         type={type}
         value={value}
+        onKeyUp={onKeyUp}
         onChange={(e) => setValue(e.target.value)}
       />
       {helperText !== "" ? <FormHelperText>{helperText}</FormHelperText> : null}
